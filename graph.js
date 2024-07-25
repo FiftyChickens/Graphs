@@ -11,7 +11,9 @@ class Graph {
   }
 
   // this function accepts a Node instance and adds it to the nodes property on the graph
-  addVertex(vertex) {}
+  addVertex(vertex) {
+    this.nodes.add(vertex);
+  }
 
   // this function accepts an array of Node instances and adds them to the nodes property on the graph
   addVertices(vertexArray) {}
@@ -32,4 +34,4 @@ class Graph {
   breadthFirstSearch(start) {}
 }
 
-module.exports = {Graph, Node}
+module.exports = { Graph, Node };
