@@ -36,10 +36,50 @@ class Graph {
   removeVertex(vertex) {}
 
   // this function returns an array of Node values using DFS
-  depthFirstSearch(start) {}
+  depthFirstSearch(start) {
+    const stack = [start];
+    const result = [];
+    const visited = new Set();
+    let curVertex;
+
+    visited.add(start);
+
+    while (stack.length) {
+      curVertex = stack.pop();
+      result.push(curVertex.value);
+
+      curVertex.adjacent.forEach((neighbor) => {
+        if (!visited.has(neighbor)) {
+          visited.add(neighbor);
+          stack.push(neighbor);
+        }
+      });
+    }
+    return result;
+  }
 
   // this function returns an array of Node values using BFS
-  breadthFirstSearch(start) {}
+  breadthFirstSearch(start) {
+    const queue = [start];
+    const result = [];
+    const visited = new Set();
+    let curVertex;
+
+    visited.add(start);
+
+    while (queue.length) {
+      curVertex = queue.shift();
+      result.push(curVertex.value);
+
+      curVertex.adjacent.forEach((neighbor) => {
+        if (!visited.has(neighbor)) {
+          visited.add(neighbor);
+          queue.push(neighbor);
+        }
+      });
+    }
+    return result;
+  }
 }
 
 module.exports = { Graph, Node };
